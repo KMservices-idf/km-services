@@ -4,623 +4,588 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KM SERVICES — Location Photobooth LumiPix</title>
+  <meta name="description" content="Location de borne Photobooth LumiPix à Paris, en Île-de-France et dans le Loiret. Tirages instantanés, livraison et installation incluses.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --cream:#f7f3e8;
-      --cream-2:#efe8d8;
-      --ink:#111111;
-      --muted:#655f55;
-      --line:rgba(17,17,17,.16);
+      --cream:#fffdec;
+      --cream-2:#f6f1dc;
+      --ink:#0b0b0b;
+      --muted:#4a463d;
+      --line:rgba(11,11,11,.14);
       --white:#ffffff;
+      --gold:#c9a96a;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:"Roboto",Arial,Helvetica,sans-serif;
       background:var(--cream);
       color:var(--ink);
-      line-height:1.45;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
     }
-
-    button,select,input{font:inherit}
+    button,select,input{font:inherit;color:inherit}
     button{cursor:pointer}
+    a{color:inherit}
+    img{display:block;max-width:100%}
 
+    /* ---------- Header ---------- */
     header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:18px 42px;
-      background:rgba(247,243,232,.94);
+      position:sticky;top:0;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 5vw;
+      background:rgba(255,253,236,.92);
       backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
     }
-
     .brand{
-      font-size:1rem;
-      font-weight:800;
-      letter-spacing:.12em;
+      font-weight:700;letter-spacing:.14em;font-size:.95rem;text-decoration:none;
     }
-
-    nav{display:flex;align-items:center;gap:28px}
-    nav button{
-      background:none;
-      border:0;
-      color:var(--ink);
-      font-size:.88rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.06em;
+    nav{display:flex;align-items:center;gap:26px}
+    nav a{
+      font-family:"Source Sans 3",Arial,sans-serif;
+      text-decoration:none;font-size:.78rem;font-weight:600;
+      text-transform:uppercase;letter-spacing:.1em;
     }
-
+    nav a:hover{text-decoration:underline;text-underline-offset:4px}
     .nav-cta{
-      padding:11px 18px;
-      border:1px solid var(--ink)!important;
-      background:var(--ink)!important;
-      color:var(--cream)!important;
+      background:var(--ink);color:var(--cream)!important;
+      padding:10px 18px;
     }
+    .nav-cta:hover{text-decoration:none!important;opacity:.85}
 
-    .tab-content{display:none}
-    .tab-content.active{display:block}
-
+    /* ---------- Hero ---------- */
     .hero{
-      min-height:78vh;
-      margin:0 4.8vw;
       position:relative;
-      display:flex;
-      align-items:flex-end;
+      margin:0 5vw;
+      min-height:min(82vh,760px);
+      display:flex;align-items:center;justify-content:center;
       overflow:hidden;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.58)),
-        radial-gradient(circle at 70% 20%,#c9b897 0,transparent 27%),
-        linear-gradient(135deg,#8e785b 0%,#c4b08d 50%,#695b49 100%);
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      opacity:.22;
-      background:
-        linear-gradient(90deg,transparent 0 24%,rgba(255,255,255,.35) 24% 25%,transparent 25% 49%,rgba(255,255,255,.24) 49% 50%,transparent 50%);
-    }
-
-    .hero-content{
-      position:relative;
-      z-index:1;
-      max-width:980px;
-      padding:64px;
       color:var(--white);
+      text-align:center;
+      background:
+        radial-gradient(circle at 18% 28%,rgba(255,214,150,.75) 0 3%,transparent 3.4%),
+        radial-gradient(circle at 26% 62%,rgba(255,226,170,.55) 0 2%,transparent 2.4%),
+        radial-gradient(circle at 78% 22%,rgba(255,200,140,.6) 0 4%,transparent 4.5%),
+        radial-gradient(circle at 86% 70%,rgba(255,236,190,.45) 0 2.6%,transparent 3%),
+        radial-gradient(circle at 62% 84%,rgba(255,210,150,.4) 0 3.2%,transparent 3.6%),
+        radial-gradient(circle at 40% 16%,rgba(255,230,180,.35) 0 1.6%,transparent 2%),
+        radial-gradient(ellipse at 50% 110%,#7a5534 0,transparent 60%),
+        linear-gradient(160deg,#2b2017 0%,#5a4029 45%,#1d1610 100%);
     }
-
-    .eyebrow{
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.15em;
-      margin-bottom:18px;
-      font-weight:700;
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 12% 80%,rgba(255,220,160,.25) 0 7%,transparent 12%),
+        radial-gradient(circle at 92% 40%,rgba(255,220,160,.2) 0 6%,transparent 11%);
+      filter:blur(8px);
     }
-
+    .hero::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.45));
+    }
+    .strip{
+      position:absolute;z-index:1;
+      width:118px;padding:9px 9px 26px;
+      background:#fbf8ee;
+      box-shadow:0 18px 40px rgba(0,0,0,.45);
+    }
+    .strip span{
+      display:block;height:82px;margin-bottom:7px;
+      background:linear-gradient(150deg,#d8b98a,#7a5a3a 60%,#3d2c1e);
+      position:relative;overflow:hidden;
+    }
+    .strip span::after{
+      content:"";position:absolute;left:50%;top:22%;
+      width:30px;height:30px;border-radius:50%;
+      transform:translateX(-50%);
+      background:rgba(255,236,205,.55);
+      box-shadow:0 34px 0 14px rgba(255,236,205,.35);
+    }
+    .strip span:nth-child(2){background:linear-gradient(150deg,#c7a37a,#5d4430 60%,#2a1f16)}
+    .strip span:nth-child(3){background:linear-gradient(150deg,#e1c79c,#8b6a46 60%,#45321f)}
+    .strip.s1{left:7%;top:14%;transform:rotate(-9deg)}
+    .strip.s2{right:8%;bottom:10%;transform:rotate(7deg)}
+    .hero-content{position:relative;z-index:2;padding:60px 24px;max-width:980px}
     .hero h1{
-      font-size:clamp(3.5rem,8vw,7.5rem);
-      line-height:.9;
-      font-weight:500;
-      letter-spacing:-.06em;
-      max-width:900px;
+      font-size:clamp(2.8rem,6.4vw,5.6rem);
+      font-weight:400;line-height:1.02;letter-spacing:-.02em;
     }
-
     .hero p{
-      max-width:650px;
-      margin-top:26px;
-      font-size:1.12rem;
+      max-width:620px;margin:22px auto 0;
+      font-size:1.08rem;font-weight:300;
+    }
+    .hero-meta{
+      margin-top:28px;
+      font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;
     }
 
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    /* ---------- Generic ---------- */
+    .section{padding:110px 5vw;scroll-margin-top:60px}
+    .section + .section{padding-top:30px}
+    h2.display{
+      font-size:clamp(2.6rem,5.6vw,4.6rem);
+      font-weight:400;line-height:1.02;letter-spacing:-.02em;
+    }
+    .lead{font-size:1.08rem;max-width:420px;color:var(--ink)}
+    .link{
+      display:inline-block;margin-top:20px;
+      background:none;border:0;padding:0 0 1px;
+      border-bottom:1px solid currentColor;
+      font-size:1rem;text-decoration:none;
+    }
+    .link:hover{opacity:.65}
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-      padding:0 24px;
-      border:1px solid var(--ink);
-      background:var(--ink);
-      color:var(--cream);
-      text-decoration:none;
-      font-weight:800;
-      text-transform:uppercase;
-      letter-spacing:.04em;
-      font-size:.8rem;
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:40px;padding:0 20px;
+      background:var(--ink);color:var(--white);border:1px solid var(--ink);
+      font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+      text-decoration:none;white-space:nowrap;
+    }
+    .btn:hover{opacity:.85}
+    .btn-pill{
+      border-radius:999px;min-height:52px;padding:0 38px;
+      font-family:"Roboto",Arial,sans-serif;font-weight:500;font-size:.85rem;
     }
 
-    .btn-light{
-      border-color:var(--white);
-      background:var(--white);
-      color:var(--ink);
+    /* ---------- Prestations ---------- */
+    .services{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:50px;margin-top:130px;
     }
-
-    .btn-outline-light{
-      border-color:var(--white);
-      background:transparent;
-      color:var(--white);
+    .service h3{
+      font-size:clamp(1.6rem,2.3vw,1.9rem);
+      font-weight:400;line-height:1.15;margin-bottom:16px;max-width:280px;
     }
+    .service p{max-width:270px;font-size:1rem}
 
-    .section{
-      padding:110px 4.8vw;
-      border-bottom:1px solid var(--line);
+    /* ---------- Rendez-vous / Formules ---------- */
+    .booking{
+      display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:start;
     }
-
-    .section-title{
-      font-size:clamp(2.8rem,6vw,5.8rem);
-      font-weight:500;
-      line-height:.95;
-      letter-spacing:-.05em;
-      max-width:980px;
-      margin-bottom:70px;
-    }
-
-    .intro-grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:70px;
-      align-items:start;
-    }
-
-    .intro-copy p{
-      font-size:clamp(1.35rem,2.4vw,2rem);
-      max-width:760px;
-    }
-
-    .zone{
-      margin-top:30px;
-      font-size:.95rem;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-    }
-
-    .feature-list{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:0;
-      border-top:1px solid var(--line);
-    }
-
-    .feature{
-      padding:34px 30px 34px 0;
-      border-right:1px solid var(--line);
-    }
-
-    .feature + .feature{padding-left:30px}
-    .feature:last-child{border-right:0}
-    .feature h3{
-      font-size:1.8rem;
-      font-weight:500;
-      line-height:1;
-      margin-bottom:16px;
-    }
-    .feature p{color:var(--muted);max-width:310px}
-
-    .quote-section{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      min-height:720px;
-      border-bottom:1px solid var(--line);
-    }
-
-    .quote-visual{
-      min-height:600px;
+    .booking-left .lead{margin-top:90px}
+    .visual{
+      position:relative;overflow:hidden;
       background:
-        linear-gradient(rgba(0,0,0,.06),rgba(0,0,0,.12)),
-        radial-gradient(circle at 48% 45%,#d3c09b 0 12%,transparent 13%),
-        linear-gradient(140deg,#5c4b39,#c6ad7d 52%,#6a5540);
-      position:relative;
+        radial-gradient(circle at 30% 30%,rgba(255,226,180,.7) 0 4%,transparent 4.6%),
+        radial-gradient(circle at 72% 18%,rgba(255,226,180,.5) 0 3%,transparent 3.6%),
+        linear-gradient(145deg,#e9dcc0 0%,#b89468 48%,#5a4430 100%);
+    }
+    .booking-left .visual{margin-top:46px;aspect-ratio:5/4;max-width:420px}
+    .visual .strip{position:absolute}
+    .booking-left .visual .strip{left:50%;top:50%;transform:translate(-50%,-50%) rotate(-5deg)}
+    .booking-right-head{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      margin:22px 0 56px;flex-wrap:wrap;
+    }
+    .booking-right-head h3{
+      display:flex;align-items:center;gap:10px;
+      font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:1.15rem;font-weight:600;
+    }
+    .toggle{display:inline-flex;border:1px solid var(--ink)}
+    .toggle button{
+      background:transparent;border:0;padding:8px 14px;
+      font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+    }
+    .toggle button.active{background:var(--ink);color:var(--cream)}
+    .slots{
+      background:var(--cream);
+      box-shadow:0 2px 14px rgba(0,0,0,.09);
+    }
+    .slot{
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      padding:34px 22px;border-bottom:1px solid var(--line);
+      font-family:"Source Sans 3",Arial,sans-serif;
+    }
+    .slot:last-child{border-bottom:0}
+    .slot strong{display:block;font-weight:600;font-size:1.02rem}
+    .slot small{font-size:1rem;color:var(--ink)}
+    .slots-note{
+      margin-top:18px;font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:.9rem;color:var(--muted);
     }
 
-    .quote-visual::after{
-      content:"PHOTOBOOTH";
-      position:absolute;
-      left:30px;
-      bottom:26px;
-      color:#fff;
-      font-size:.78rem;
-      font-weight:800;
-      letter-spacing:.16em;
+    /* ---------- Engagement ---------- */
+    .split{
+      display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;
     }
+    .split .visual{aspect-ratio:9/10}
+    .split .visual .strip.a{left:20%;top:16%;transform:rotate(-8deg);width:140px}
+    .split .visual .strip.a span{height:96px}
+    .split .visual .strip.b{right:16%;bottom:12%;transform:rotate(6deg);width:140px}
+    .split .visual .strip.b span{height:96px}
+    .split .lead{max-width:360px;margin:20px 0 42px}
 
-    .quote-panel{
-      padding:76px 7vw;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
+    /* ---------- Devis ---------- */
+    .quote{
+      display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;align-items:start;
     }
-
-    .quote-panel h2{
-      font-size:clamp(3rem,6vw,5.5rem);
-      font-weight:500;
-      line-height:.94;
-      letter-spacing:-.05em;
-      margin-bottom:26px;
-    }
-
-    .card{
-      background:rgba(255,255,255,.33);
-      border:1px solid var(--line);
-      padding:32px;
-    }
-
-    .form-group{margin-bottom:22px}
+    .quote .lead{margin-top:28px}
+    .form-group{margin-bottom:28px}
     .form-group label{
-      display:block;
-      margin-bottom:8px;
-      font-weight:700;
-      font-size:.92rem;
+      display:block;margin-bottom:6px;
+      font-family:"Source Sans 3",Arial,sans-serif;font-weight:600;font-size:.92rem;
     }
-
-    .form-group select,
-    .form-group input{
-      width:100%;
-      background:transparent;
-      border:0;
-      border-bottom:1px solid var(--ink);
-      border-radius:0;
-      padding:14px 4px;
-      outline:none;
+    .form-group select{
+      width:100%;appearance:none;
+      background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230b0b0b' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 4px center;
+      border:0;border-bottom:1px solid var(--ink);border-radius:0;
+      padding:12px 26px 12px 2px;outline:none;font-size:1rem;
     }
-
-    .devis-box{
-      margin-top:30px;
-      padding-top:26px;
-      border-top:1px solid var(--ink);
+    .form-group select:focus{border-bottom-width:2px}
+    .total{
+      margin-top:40px;padding-top:26px;border-top:1px solid var(--ink);
     }
-
-    .devis-box h4{
-      font-size:.84rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      margin-bottom:8px;
+    .total h4{
+      font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
     }
-
     .price{
-      font-size:clamp(2.7rem,5vw,4.5rem);
-      font-weight:500;
-      letter-spacing:-.05em;
+      font-size:clamp(2.8rem,5vw,4.2rem);font-weight:400;letter-spacing:-.02em;line-height:1.1;
+      margin:6px 0 4px;
     }
+    .total small{color:var(--muted);font-size:.92rem}
 
-    .reservation{
-      padding:110px 4.8vw;
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:70px;
-      align-items:start;
-    }
-
-    .reservation h2{
-      font-size:clamp(3rem,6vw,5.8rem);
-      font-weight:500;
-      line-height:.95;
-      letter-spacing:-.05em;
-    }
-
-    .reservation-copy p{
-      max-width:430px;
-      margin-top:24px;
-      font-size:1.08rem;
-    }
-
-    .iframe-shell{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.28);
-      padding:8px;
-    }
-
-    .iframe-container{
-      width:100%;
-      height:820px;
-      border:0;
-      display:block;
-      background:white;
-    }
-
-    .tarifs-wrap{padding:100px 4.8vw}
-    .tarifs-wrap h2{
-      font-size:clamp(3rem,6vw,5.8rem);
-      font-weight:500;
-      line-height:.95;
-      letter-spacing:-.05em;
-      margin-bottom:55px;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      background:transparent;
-      font-size:1rem;
-    }
-
-    th,td{
-      padding:22px 14px;
-      text-align:left;
-      border-bottom:1px solid var(--line);
-      vertical-align:top;
-    }
-
+    /* ---------- Tarifs ---------- */
+    .table-wrap{overflow-x:auto;margin-top:64px}
+    table{width:100%;border-collapse:collapse;min-width:620px}
+    th,td{padding:22px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
     th{
-      text-transform:uppercase;
-      font-size:.75rem;
-      letter-spacing:.08em;
+      font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+      border-bottom-color:var(--ink);
     }
+    td{font-size:1rem}
+    td em{color:var(--muted);font-style:normal}
 
+    /* ---------- Réservation ---------- */
+    .reservation{
+      display:grid;grid-template-columns:.8fr 1.2fr;gap:6vw;align-items:start;
+    }
+    .reservation .lead{margin-top:28px}
+    .iframe-shell{background:var(--white);box-shadow:0 2px 14px rgba(0,0,0,.09)}
+    .iframe-shell iframe{width:100%;height:860px;border:0;display:block}
+
+    /* ---------- Footer ---------- */
     footer{
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:30px;
-      padding:40px 4.8vw;
-      background:var(--ink);
-      color:var(--cream);
-      font-size:.9rem;
+      margin-top:40px;padding:70px 5vw 40px;
+      background:var(--ink);color:var(--cream);
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;
+      padding-bottom:50px;border-bottom:1px solid rgba(255,253,236,.18);
+    }
+    .footer-grid h4{
+      font-family:"Source Sans 3",Arial,sans-serif;
+      font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+      margin-bottom:14px;opacity:.7;
+    }
+    .footer-brand{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;line-height:1.1}
+    .footer-grid a{text-decoration:none;display:block;margin-bottom:6px}
+    .footer-grid a:hover{text-decoration:underline}
+    .footer-bottom{padding-top:24px;font-size:.82rem;opacity:.6}
+
+    /* ---------- Reveal ---------- */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.in{opacity:1;transform:none}
+    @media (prefers-reduced-motion:reduce){
+      .reveal{opacity:1;transform:none;transition:none}
+      html{scroll-behavior:auto}
     }
 
-    footer a{color:inherit}
-
+    /* ---------- Responsive ---------- */
     @media (max-width:900px){
-      header{padding:16px 20px}
-      nav{gap:10px}
-      nav button{font-size:.72rem}
+      nav a:not(.nav-cta){display:none}
       .hero{margin:0;min-height:72vh}
-      .hero-content{padding:38px 22px}
-      .section,.tarifs-wrap{padding:75px 22px}
-      .intro-grid,.quote-section,.reservation{grid-template-columns:1fr}
-      .feature-list{grid-template-columns:1fr}
-      .feature,.feature + .feature{padding:26px 0;border-right:0;border-bottom:1px solid var(--line)}
-      .quote-visual{min-height:420px}
-      .quote-panel{padding:70px 22px}
-      .reservation{padding:75px 22px}
-      footer{grid-template-columns:1fr}
-      .desktop-only{display:none}
-    }
-
-    @media (max-width:620px){
-      header .brand{font-size:.82rem}
-      nav button:not(.nav-cta){display:none}
-      .hero h1{font-size:3.4rem}
-      .section-title{font-size:3rem}
-      .hero-actions{flex-direction:column;align-items:flex-start}
-      .btn{width:100%}
-      th,td{padding:16px 8px;font-size:.88rem}
+      .strip{width:86px}
+      .strip span{height:58px}
+      .strip.s1{left:4%;top:8%}
+      .strip.s2{right:4%;bottom:6%}
+      .section{padding:80px 22px}
+      .section + .section{padding-top:20px}
+      .services{grid-template-columns:1fr;gap:48px;margin-top:60px}
+      .booking,.split,.quote,.reservation{grid-template-columns:1fr;gap:50px}
+      .booking-left .lead{margin-top:30px}
+      .booking-left .visual{max-width:none}
+      .slot{padding:26px 18px}
+      .footer-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="brand">KM SERVICES</div>
+  <a href="#top" class="brand">KM SERVICES</a>
   <nav>
-    <button onclick="switchTab('accueil')">Accueil</button>
-    <button onclick="switchTab('tarifs')">Tarifs</button>
-    <button onclick="scrollToReservation()" class="nav-cta">Réserver</button>
+    <a href="#prestations">Prestations</a>
+    <a href="#formules">Formules</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#devis">Devis</a>
+    <a href="#reservation" class="nav-cta">Réserver</a>
   </nav>
 </header>
 
-<div id="tab-accueil" class="tab-content active">
+<main id="top">
 
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" aria-label="Présentation">
+    <div class="strip s1" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="strip s2" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="hero-content">
-      <div class="eyebrow">Paris • Île-de-France • Loiret</div>
       <h1>Des souvenirs qui restent.</h1>
-      <p>
-        Location de borne Photobooth LumiPix pour vos événements privés et professionnels,
-        avec tirages instantanés et partage numérique.
-      </p>
-      <div class="hero-actions">
-        <button onclick="scrollToReservation()" class="btn btn-light">Réserver une date</button>
-        <button onclick="switchTab('tarifs')" class="btn btn-outline-light">Voir les tarifs</button>
-      </div>
+      <p>Location de borne Photobooth LumiPix pour vos événements privés et professionnels, avec tirages instantanés et partage numérique.</p>
+      <div class="hero-meta">Paris • Île-de-France • Loiret (45)</div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="intro-grid">
-      <div class="intro-copy">
-        <div class="eyebrow">KM Services</div>
-        <p>
-          Une expérience photobooth simple, élégante et prête à l'emploi pour mariages,
-          anniversaires, soirées, événements d'entreprise et lancements de marque.
-        </p>
-        <div class="zone">Disponible sur Paris, toute l'Île-de-France et le Loiret (45)</div>
-      </div>
-      <div>
-        <div class="feature-list">
-          <article class="feature">
-            <h3>Livraison & installation</h3>
-            <p>Nous préparons la borne sur place afin qu'elle soit prête à l'arrivée de vos invités.</p>
-          </article>
-          <article class="feature">
-            <h3>Tirages instantanés</h3>
-            <p>Des photos haute définition imprimées immédiatement pendant votre événement.</p>
-          </article>
-          <article class="feature">
-            <h3>Cadre personnalisé</h3>
-            <p>Ajoutez votre logo, vos prénoms ou l'identité visuelle de votre événement.</p>
-          </article>
+  <!-- PRESTATIONS -->
+  <section class="section" id="prestations">
+    <h2 class="display reveal">Prestations sur site</h2>
+    <div class="services">
+      <article class="service reveal">
+        <h3>Livraison &amp; installation</h3>
+        <p>Nous livrons et installons la borne sur place pour qu'elle soit prête à l'arrivée de vos invités.</p>
+        <a href="#reservation" class="link">Planifier</a>
+      </article>
+      <article class="service reveal">
+        <h3>Tirages instantanés</h3>
+        <p>Des photos haute définition imprimées en quelques secondes et partagées en numérique.</p>
+        <a href="#reservation" class="link">Planifier</a>
+      </article>
+      <article class="service reveal">
+        <h3>Cadre photo personnalisé</h3>
+        <p>Votre logo, vos prénoms ou l'identité visuelle de votre événement sur chaque tirage.</p>
+        <a href="#devis" class="link">Planifier</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- FORMULES -->
+  <section class="section" id="formules">
+    <div class="booking">
+      <div class="booking-left">
+        <h2 class="display reveal">Choisir sa formule</h2>
+        <p class="lead reveal">Réservez la borne LumiPix pour votre mariage, anniversaire, soirée ou événement d'entreprise. La livraison et l'installation sont toujours incluses.</p>
+        <div class="visual reveal" aria-hidden="true">
+          <div class="strip"><span></span><span></span><span></span></div>
         </div>
       </div>
+
+      <div class="booking-right">
+        <div class="booking-right-head">
+          <h3>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="1"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+            Sélectionner une formule
+          </h3>
+          <div class="toggle" role="group" aria-label="Type de client">
+            <button type="button" class="active" data-client="particulier">Particulier</button>
+            <button type="button" data-client="entreprise">Entreprise</button>
+          </div>
+        </div>
+
+        <div class="slots">
+          <div class="slot">
+            <div><strong>Location semaine</strong><small data-price="semaine">240 € TTC</small></div>
+            <button type="button" class="btn" data-book="semaine">Programmer</button>
+          </div>
+          <div class="slot">
+            <div><strong>Week-end — jusqu'à 1h30</strong><small data-price="we_standard">360 € TTC</small></div>
+            <button type="button" class="btn" data-book="we_standard">Programmer</button>
+          </div>
+          <div class="slot">
+            <div><strong>Week-end — au-delà de 1h30</strong><small data-price="we_tardif">380 € TTC</small></div>
+            <button type="button" class="btn" data-book="we_tardif">Programmer</button>
+          </div>
+        </div>
+        <p class="slots-note">Option cadre photo personnalisé / logo : +25 € TTC (20,83 € HT).</p>
+      </div>
     </div>
   </section>
 
-  <section class="quote-section">
-    <div class="quote-visual"></div>
-    <div class="quote-panel">
-      <div class="eyebrow">Estimation immédiate</div>
-      <h2>Composez votre formule.</h2>
-      <div class="card">
+  <!-- ENGAGEMENT -->
+  <section class="section">
+    <div class="split">
+      <div class="visual reveal" aria-hidden="true">
+        <div class="strip a"><span></span><span></span><span></span></div>
+        <div class="strip b"><span></span><span></span><span></span></div>
+      </div>
+      <div class="reveal">
+        <h2 class="display">Simplicité<br>et élégance</h2>
+        <p class="lead">KM Services vous propose une expérience photobooth clé en main : une borne élégante, simple à utiliser, et des souvenirs imprimés que vos invités emportent avec eux.</p>
+        <a href="#devis" class="btn btn-pill">Estimer mon devis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEVIS -->
+  <section class="section" id="devis">
+    <div class="quote">
+      <div class="reveal">
+        <h2 class="display">Composez votre formule</h2>
+        <p class="lead">Obtenez une estimation immédiate selon votre profil, la période de réservation et les options choisies.</p>
+      </div>
+      <div class="reveal">
         <div class="form-group">
           <label for="sim-type">Vous êtes</label>
-          <select id="sim-type" onchange="calculateDevis()">
+          <select id="sim-type">
             <option value="particulier">Un particulier (TTC)</option>
             <option value="entreprise">Une entreprise (HT)</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="sim-periode">Période de réservation</label>
-          <select id="sim-periode" onchange="calculateDevis()">
+          <select id="sim-periode">
             <option value="semaine">Semaine</option>
             <option value="we_standard">Week-end — jusqu'à 1h30</option>
             <option value="we_tardif">Week-end — au-delà de 1h30</option>
           </select>
         </div>
-
         <div class="form-group">
           <label for="sim-cadre">Cadre photo personnalisé / logo</label>
-          <select id="sim-cadre" onchange="calculateDevis()">
+          <select id="sim-cadre">
             <option value="non">Non — format standard</option>
             <option value="oui">Oui (+25 € TTC / 20,83 € HT)</option>
           </select>
         </div>
-
-        <div class="devis-box">
+        <div class="total" aria-live="polite">
           <h4>Montant estimé</h4>
           <div class="price" id="total-price">240 € TTC</div>
-          <small id="price-subtext">TVA incluse — Livraison & installation incluses</small>
+          <small id="price-subtext">TVA incluse — Livraison &amp; installation incluses</small>
         </div>
+        <a href="#reservation" class="link">Réserver cette formule</a>
       </div>
     </div>
   </section>
 
-  <section class="reservation" id="section-form">
-    <div class="reservation-copy">
-      <div class="eyebrow">Réservation</div>
-      <h2>Votre événement commence ici.</h2>
-      <p>
-        Remplissez le formulaire pour nous transmettre votre date, votre lieu et vos besoins.
-        Nous vous recontacterons sous 24 à 48 h.
-      </p>
-    </div>
-
-    <div class="iframe-shell">
-      <iframe
-        class="iframe-container"
-        src="https://docs.google.com/forms/d/e/1FAIpQLScmNh0tIIOdAHLNyjxDVP4W5hEBoN8ji9iEMEczPC-d9vfdww/viewform?usp=dialog"
-        title="Formulaire de réservation KM Services">
-        Chargement...
-      </iframe>
+  <!-- TARIFS -->
+  <section class="section" id="tarifs">
+    <h2 class="display reveal">Grille tarifaire</h2>
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Prestations &amp; options</th>
+            <th>Particuliers (HT / TTC)</th>
+            <th>Entreprises (HT / TTC)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Livraison &amp; installation</td><td>Inclus</td><td>Inclus</td></tr>
+          <tr><td>Cadre photo personnalisé / logo</td><td>+20,83 € HT <em>(+25 € TTC)</em></td><td>+20,83 € HT <em>(+25 € TTC)</em></td></tr>
+          <tr><td>Prix semaine</td><td>200 € HT <em>(240 € TTC)</em></td><td>225 € HT <em>(270 € TTC)</em></td></tr>
+          <tr><td>Prix week-end <em>(jusqu'à 1h30)</em></td><td>300 € HT <em>(360 € TTC)</em></td><td>325 € HT <em>(390 € TTC)</em></td></tr>
+          <tr><td>Prix week-end <em>(au-delà de 1h30)</em></td><td>316,67 € HT <em>(380 € TTC)</em></td><td>341,67 € HT <em>(410 € TTC)</em></td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-</div>
-
-<div id="tab-tarifs" class="tab-content">
-  <main class="tarifs-wrap">
-    <div class="eyebrow">Tarification</div>
-    <h2>Une offre claire, sans surprise.</h2>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Prestations & options</th>
-          <th>Particuliers (HT / TTC)</th>
-          <th>Entreprises (HT / TTC)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Livraison & installation</strong></td>
-          <td>Inclus</td>
-          <td>Inclus</td>
-        </tr>
-        <tr>
-          <td><strong>Cadre photo personnalisé / logo</strong></td>
-          <td>+20,83 € HT <em>(+25 € TTC)</em></td>
-          <td>+20,83 € HT <em>(+25 € TTC)</em></td>
-        </tr>
-        <tr>
-          <td><strong>Prix semaine</strong></td>
-          <td>200 € HT <em>(240 € TTC)</em></td>
-          <td>225 € HT <em>(270 € TTC)</em></td>
-        </tr>
-        <tr>
-          <td><strong>Prix week-end</strong> <em>(jusqu'à 1h30)</em></td>
-          <td>300 € HT <em>(360 € TTC)</em></td>
-          <td>325 € HT <em>(390 € TTC)</em></td>
-        </tr>
-        <tr>
-          <td><strong>Prix week-end</strong> <em>(au-delà de 1h30)</em></td>
-          <td>316,67 € HT <em>(380 € TTC)</em></td>
-          <td>341,67 € HT <em>(410 € TTC)</em></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div style="margin-top:38px;max-width:320px">
-      <button onclick="scrollToReservation()" class="btn">Réserver ma date</button>
+  <!-- RÉSERVATION -->
+  <section class="section" id="reservation">
+    <div class="reservation">
+      <div class="reveal">
+        <h2 class="display">Prendre rendez-vous</h2>
+        <p class="lead">Remplissez le formulaire pour nous transmettre votre date, votre lieu et vos besoins. Nous vous recontactons sous 24 à 48 h.</p>
+        <a href="tel:+33651685167" class="link">+33 6 51 68 51 67</a>
+      </div>
+      <div class="iframe-shell">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScmNh0tIIOdAHLNyjxDVP4W5hEBoN8ji9iEMEczPC-d9vfdww/viewform?embedded=true"
+          title="Formulaire de réservation KM Services"
+          loading="lazy">Chargement…</iframe>
+      </div>
     </div>
-  </main>
-</div>
+  </section>
+
+</main>
 
 <footer>
-  <div>KM SERVICES — Location Photobooth LumiPix</div>
-  <div>
-    <a href="tel:+33651685167">+33 6 51 68 51 67</a>
-    &nbsp;•&nbsp;
-    <a href="mailto:kmservices.idf@gmail.com">kmservices.idf@gmail.com</a>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">KM SERVICES</div>
+      <p style="margin-top:12px;opacity:.75">Location Photobooth LumiPix</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+33651685167">+33 6 51 68 51 67</a>
+      <a href="mailto:kmservices.idf@gmail.com">kmservices.idf@gmail.com</a>
+    </div>
+    <div>
+      <h4>Zone d'intervention</h4>
+      <p>Paris, toute l'Île-de-France<br>et le Loiret (45)</p>
+    </div>
   </div>
+  <div class="footer-bottom">© <span id="year"></span> KM Services — Tous droits réservés</div>
 </footer>
 
 <script>
-  function switchTab(tabName) {
-    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+  // Prix : TTC pour les particuliers, HT pour les entreprises
+  const PRICES = {
+    particulier: { semaine: 240, we_standard: 360, we_tardif: 380, cadre: 25, unit: 'TTC' },
+    entreprise:  { semaine: 225, we_standard: 325, we_tardif: 341.67, cadre: 20.83, unit: 'HT' }
+  };
 
-    if (tabName === 'accueil') {
-      document.getElementById('tab-accueil').classList.add('active');
-    } else if (tabName === 'tarifs') {
-      document.getElementById('tab-tarifs').classList.add('active');
-    }
+  const fmt = n => (Number.isInteger(n) ? String(n) : n.toFixed(2).replace('.', ',')) + ' €';
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function scrollToReservation() {
-    switchTab('accueil');
-    setTimeout(() => {
-      document.getElementById('section-form').scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  }
+  const simType = document.getElementById('sim-type');
+  const simPeriode = document.getElementById('sim-periode');
+  const simCadre = document.getElementById('sim-cadre');
 
   function calculateDevis() {
-    const type = document.getElementById('sim-type').value;
-    const periode = document.getElementById('sim-periode').value;
-    const cadre = document.getElementById('sim-cadre').value;
+    const p = PRICES[simType.value];
+    let total = p[simPeriode.value];
+    if (simCadre.value === 'oui') total = Math.round((total + p.cadre) * 100) / 100;
 
-    let basePrice = 0;
-
-    if (type === 'particulier') {
-      if (periode === 'semaine') basePrice = 240;
-      else if (periode === 'we_standard') basePrice = 360;
-      else if (periode === 'we_tardif') basePrice = 380;
-
-      if (cadre === 'oui') basePrice += 25;
-
-      document.getElementById('total-price').innerText = basePrice + " € TTC";
-      document.getElementById('price-subtext').innerText =
-        "TVA incluse — Livraison & installation incluses";
-    } else {
-      if (periode === 'semaine') basePrice = 225;
-      else if (periode === 'we_standard') basePrice = 325;
-      else if (periode === 'we_tardif') basePrice = 341.67;
-
-      if (cadre === 'oui') basePrice += 20.83;
-
-      document.getElementById('total-price').innerText =
-        basePrice.toFixed(2).replace('.', ',') + " € HT";
-      document.getElementById('price-subtext').innerText =
-        "Montant hors taxes (TVA 20 % applicable) — Livraison incluse";
-    }
+    document.getElementById('total-price').textContent = fmt(total) + ' ' + p.unit;
+    document.getElementById('price-subtext').textContent = p.unit === 'TTC'
+      ? 'TVA incluse — Livraison & installation incluses'
+      : 'Montant hors taxes (TVA 20 % applicable) — Livraison & installation incluses';
   }
+
+  function setClient(client) {
+    document.querySelectorAll('.toggle button').forEach(b =>
+      b.classList.toggle('active', b.dataset.client === client));
+    const p = PRICES[client];
+    document.querySelectorAll('[data-price]').forEach(el => {
+      el.textContent = fmt(p[el.dataset.price]) + ' ' + p.unit;
+    });
+    simType.value = client;
+    calculateDevis();
+  }
+
+  [simType, simPeriode, simCadre].forEach(el => el.addEventListener('change', calculateDevis));
+  simType.addEventListener('change', () => setClient(simType.value));
+
+  document.querySelectorAll('.toggle button').forEach(b =>
+    b.addEventListener('click', () => setClient(b.dataset.client)));
+
+  // "Programmer" : préremplit l'estimation puis ouvre la réservation
+  document.querySelectorAll('[data-book]').forEach(b =>
+    b.addEventListener('click', () => {
+      simPeriode.value = b.dataset.book;
+      calculateDevis();
+      document.getElementById('reservation').scrollIntoView({ behavior: 'smooth' });
+    }));
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Apparition au défilement
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  calculateDevis();
 </script>
 
+<script async src="/.netlify/scripts/ar" data-netlify-deploy-id="6abe85ea6b4c95c63cbb6f8f" data-netlify-site-id="e56bbd85-7231-456a-9a3a-2f17a3683915" data-agent-runner-id="6abe855ca196a8f2a3dfc067"></script>
 </body>
 </html>
