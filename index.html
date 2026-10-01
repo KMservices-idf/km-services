@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KM SERVICES — Location Photobooth LumiPix</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background: var(--light); color: var(--dark); line-height: 1.6; }
+        
+        header { background: var(--dark); color: white; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        header h1 { font-size: 1.4rem; letter-spacing: 1px; }
+        header span { color: var(--primary); }
+        nav button { background: transparent; border: none; color: white; font-size: 1rem; margin-left: 1rem; cursor: pointer; font-weight: 500; }
+        nav button:hover { color: var(--primary); }
+
+        .hero { text-align: center; padding: 4rem 2rem; background: white; border-bottom: 1px solid #e2e8f0; }
+        .hero h2 { font-size: 2.2rem; margin-bottom: 1rem; color: var(--dark); }
+        .hero p { font-size: 1.1rem; color: var(--gray); max-width: 650px; margin: 0 auto 1.5rem; }
+        
+        .badge-zone { display: inline-block; background: #e0e7ff; color: #3730a3; padding: 0.5rem 1rem; border-radius: 50px; font-weight: 600; font-size: 0.95rem; margin-bottom: 2rem; }
+
+        .btn { background: var(--primary); color: white; padding: 0.8rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; border: none; cursor: pointer; }
+        .btn-secondary { background: #e2e8f0; color: var(--dark); margin-left: 0.5rem; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+        h3 { font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        th { background: var(--dark); color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f1f5f9; }
+
+        /* Simulator & Form Card */
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 2.5rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+        .form-group select, .form-group input { width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 6px; }
+        
+        .devis-box { background: #f8fafc; border: 2px dashed var(--primary); padding: 1.2rem; border-radius: 8px; text-align: center; margin-top: 1.5rem; }
+        .devis-box h4 { font-size: 1.1rem; color: var(--gray); margin-bottom: 0.5rem; }
+        .devis-box .price { font-size: 2rem; font-weight: 800; color: var(--primary); }
+
+        .iframe-container { position: relative; width: 100%; height: 800px; border: none; border-radius: 8px; overflow: hidden; }
+
+        footer { text-align: center; padding: 2rem; background: var(--dark); color: var(--gray); font-size: 0.9rem; margin-top: 3rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>KM <span>SERVICES</span></h1>
+        <nav>
+            <button onclick="switchTab('accueil')">Accueil</button>
+            <button onclick="switchTab('tarifs')">Tarifs</button>
+            <button onclick="scrollToReservation()" class="btn" style="padding: 0.4rem 1rem; font-size: 0.9rem;">Réservation</button>
+        </nav>
+    </header>
+
+    <!-- ONGLET ACCUEIL -->
+    <div id="tab-accueil" class="tab-content active">
+        <section class="hero">
+            <h2>Borne PhotoBooth LumiPix</h2>
+            <p>Sublimez vos événements privés et professionnels avec des tirages haute définition instantanés et un partage numérique immédiat.</p>
+            
+            <div class="badge-zone">
+                📍 Disponible sur Paris, toute l'Île-de-France et le Loiret (45)
+            </div>
+            <br>
+            <button onclick="switchTab('tarifs')" class="btn btn-secondary">Consulter la grille tarifaire</button>
+            <button onclick="scrollToReservation()" class="btn">Réserver / Estimer</button>
+        </section>
+
+        <div class="container">
+            
+            <!-- CALCULATEUR DE DEVIS AUTOMATIQUE -->
+            <div class="card">
+                <h3>Estimation de votre devis en direct</h3>
+                <div class="form-group">
+                    <label>Vous êtes :</label>
+                    <select id="sim-type" onchange="calculateDevis()">
+                        <option value="particulier">Un particulier (TTC)</option>
+                        <option value="entreprise">Une entreprise (HT)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Période de réservation :</label>
+                    <select id="sim-periode" onchange="calculateDevis()">
+                        <option value="semaine">Semaine</option>
+                        <option value="we_standard">Week-end (jusqu'à 1h30 du matin)</option>
+                        <option value="we_tardif">Week-end (au-delà de 1h30 du matin)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Option Cadre Photo Personnalisé / Logo :</label>
+                    <select id="sim-cadre" onchange="calculateDevis()">
+                        <option value="non">Non (Format standard)</option>
+                        <option value="oui">Oui (+25 € TTC / 20.83 € HT)</option>
+                    </select>
+                </div>
+
+                <div class="devis-box">
+                    <h4>Montant estimé de votre prestation :</h4>
+                    <div class="price" id="total-price">240 € TTC</div>
+                    <small id="price-subtext">Livraison & Installation incluses</small>
+                </div>
+            </div>
+
+            <!-- GOOGLE FORMS DIRECT -->
+            <section id="section-form">
+                <h3>Réservation</h3>
+                <p style="text-align: center; color: var(--gray); margin-bottom: 1.5rem;">
+                    Remplissez le questionnaire ci-dessous pour valider votre demande. Nous vous recontacterons sous 24h à 48h.
+                </p>
+                <div class="card" style="padding: 0.5rem;">
+                    <!-- REMPLACER L'URL DU SRC CI-DESSOUS PAR TON LIEN GOOGLE FORMS -->
+                    <iframe class="iframe-container" src="https://docs.google.com/forms/d/e/1FAIpQLScmNh0tIIOdAHLNyjxDVP4W5hEBoN8ji9iEMEczPC-d9vfdww/viewform?usp=dialog">Chargement...</iframe>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ONGLET TARIFS -->
+    <div id="tab-tarifs" class="tab-content">
+        <div class="container">
+            <h3>Grille Tarifaire Détaillée</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Prestations & Options</th>
+                        <th>Particuliers (HT / TTC)</th>
+                        <th>Entreprises (HT / TTC)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Livraison & Installation</strong></td>
+                        <td>Inclus</td>
+                        <td>Inclus</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cadre photo personnalisé / Logo</strong></td>
+                        <td>+20,83 € HT <em>(+25 € TTC)</em></td>
+                        <td>+20,83 € HT <em>(+25 € TTC)</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prix Semaine</strong></td>
+                        <td>200 € HT <em>(240 € TTC)</em></td>
+                        <td>225 € HT <em>(270 € TTC)</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prix Week-end</strong> <em>(jusqu'à 1h30)</em></td>
+                        <td>300 € HT <em>(360 € TTC)</em></td>
+                        <td>325 € HT <em>(390 € TTC)</em></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Prix Week-end</strong> <em>(au-delà de 1h30)</em></td>
+                        <td>316,67 € HT <em>(380 € TTC)</em></td>
+                        <td>341,67 € HT <em>(410 € TTC)</em></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <button onclick="scrollToReservation()" class="btn">Réserver ma date</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>KM SERVICES — Contact : +33 6 51 68 51 67 | kmservices.idf@gmail.com</p>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            if (tabName === 'accueil') {
+                document.getElementById('tab-accueil').classList.add('active');
+            } else if (tabName === 'tarifs') {
+                document.getElementById('tab-tarifs').classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function scrollToReservation() {
+            switchTab('accueil');
+            setTimeout(() => {
+                document.getElementById('section-form').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function calculateDevis() {
+            const type = document.getElementById('sim-type').value;
+            const periode = document.getElementById('sim-periode').value;
+            const cadre = document.getElementById('sim-cadre').value;
+
+            let basePrice = 0;
+
+            if (type === 'particulier') {
+                if (periode === 'semaine') basePrice = 240;
+                else if (periode === 'we_standard') basePrice = 360;
+                else if (periode === 'we_tardif') basePrice = 380;
+
+                if (cadre === 'oui') basePrice += 25;
+
+                document.getElementById('total-price').innerText = basePrice + " € TTC";
+                document.getElementById('price-subtext').innerText = "TVA incluse — Livraison & Installation offertes";
+            } else {
+                if (periode === 'semaine') basePrice = 225;
+                else if (periode === 'we_standard') basePrice = 325;
+                else if (periode === 'we_tardif') basePrice = 341.67;
+
+                if (cadre === 'oui') basePrice += 20.83;
+
+                document.getElementById('total-price').innerText = basePrice.toFixed(2) + " € HT";
+                document.getElementById('price-subtext').innerText = "Montant Hors Taxes (TVA 20% applicable) — Livraison incluses";
+            }
+        }
+    </script>
+</body>
+</html>
