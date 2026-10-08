@@ -585,9 +585,10 @@
               <p class="desc">Quelques détails pour préparer un devis adapté.</p>
               <fieldset class="field" data-required="radio">
                 <legend>Quel type d'événement organisez-vous ?<span class="req">*</span></legend>
-                <div class="choices"><label class="choice"><input type="radio" name="type_evenement" value="Mariage"><span>Mariage</span></label><label class="choice"><input type="radio" name="type_evenement" value="Anniversaire"><span>Anniversaire</span></label><label class="choice"><input type="radio" name="type_evenement" value="Baby shower"><span>Baby shower</span></label><label class="choice"><input type="radio" name="type_evenement" value="Événement d'entreprise"><span>Événement d'entreprise</span></label><label class="choice"><input type="radio" name="type_evenement" value="Baptême"><span>Baptême</span></label><label class="choice"><input type="radio" name="type_evenement" value="Soirée privée"><span>Soirée privée</span></label><label class="choice"><input type="radio" name="type_evenement" value="Autre"><span>Autre</span></label></div>
+                <div class="choices"><label class="choice" data-for="Particulier"><input type="radio" name="type_evenement" value="Mariage"><span>Mariage</span></label><label class="choice" data-for="Particulier"><input type="radio" name="type_evenement" value="Anniversaire"><span>Anniversaire</span></label><label class="choice" data-for="Particulier"><input type="radio" name="type_evenement" value="Baby shower"><span>Baby shower</span></label><label class="choice" data-for="Entreprise"><input type="radio" name="type_evenement" value="Événement d'entreprise"><span>Événement d'entreprise</span></label><label class="choice" data-for="Particulier"><input type="radio" name="type_evenement" value="Baptême"><span>Baptême</span></label><label class="choice" data-for="Entreprise"><input type="radio" name="type_evenement" value="Soirée privée"><span>Soirée privée</span></label><label class="choice" data-for="Particulier"><input type="radio" name="type_evenement" value="Autre"><span>Autre</span></label><label class="choice" data-for="Entreprise"><input type="radio" name="type_evenement" value="Autre"><span>Autre</span></label></div>
                 <p class="error">Veuillez choisir un type d'événement.</p>
               </fieldset>
+              <div class="field" id="rsv-autre-wrap" data-required="text" hidden><label for="rsv-autre">Précisez votre événement<span class="req">*</span></label><span class="hint">Exemple : remise de diplôme, pendaison de crémaillère, départ à la retraite…</span><input type="text" id="rsv-autre" name="evenement_precis" disabled><p class="error">Merci de préciser le type d'événement.</p></div>
               <div class="row">
                 <div class="field" data-required="text"><label for="rsv-date">Date de l'événement<span class="req">*</span></label><input type="date" id="rsv-date" name="date_evenement"><p class="error">Veuillez indiquer une date.</p></div>
                 <div class="field"><label for="rsv-heure">Heure de disponibilité souhaitée</label><input type="time" id="rsv-heure" name="heure_disponibilite"></div>
@@ -719,9 +720,28 @@
     rsv.querySelectorAll('[data-for]').forEach(el => {
       const active = el.dataset.for === type;
       el.hidden = !active;
-      el.querySelectorAll('input,textarea').forEach(i => { i.disabled = !active; });
+      el.querySelectorAll('input,textarea').forEach(i => {
+        i.disabled = !active;
+        // un choix masqué ne doit pas rester coché (ex. si le visiteur change de profil)
+        if (!active && (i.type === 'radio' || i.type === 'checkbox')) i.checked = false;
+      });
     });
+    rsvToggleAutre(false);
   }
+
+  // Champ libre affiché uniquement si "Autre" est sélectionné comme type d'événement
+  function rsvToggleAutre(focus) {
+    const wrap = document.getElementById('rsv-autre-wrap');
+    const input = document.getElementById('rsv-autre');
+    const on = rsv.querySelector('input[name="type_evenement"]:checked')?.value === 'Autre';
+    wrap.hidden = !on;
+    input.disabled = !on;
+    if (!on) { input.value = ''; wrap.classList.remove('invalid'); }
+    else if (focus) input.focus({ preventScroll: true });
+  }
+  rsv.addEventListener('change', e => {
+    if (e.target.name === 'type_evenement') rsvToggleAutre(true);
+  });
 
   function rsvValidateField(field) {
     const kind = field.dataset.required;
